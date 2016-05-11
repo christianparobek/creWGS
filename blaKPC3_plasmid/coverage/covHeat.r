@@ -86,6 +86,10 @@ names(mat4) <- c("index", "Kp156", "Kp152", "Kp150", "Ec149", "Ec114", "Ec015", 
 mat4_m <- melt(mat4, id.var = "index")
   # melt it for ggplot plotting
 
+##############################
+############ PLOT ############
+##############################
+
 tiff("../heatmap.tiff", compress = "lzw", units = "in", height = 9, width = 6, res = 300)
 
 ggplot(mat4_m, aes(index, variable, group = variable)) +
@@ -111,5 +115,10 @@ ggplot(mat4_m, aes(index, variable, group = variable)) +
 dev.off()
 
 
+##############################
+###### PERCENT COVERAGE ######
+##############################
 
+apply(mat4, 2, sum)/nrow(mat4)
 
+  
